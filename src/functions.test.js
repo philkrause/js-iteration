@@ -57,20 +57,21 @@
  * the words forced to uppercase
  *
  * Example:
- *
- * const yelling = (array) => {
- *    // your code here
- * }
- */
-
-// ...
-
+ **/
+const yelling = array => {
+  let newArray = array.map(x => x.toUpperCase())
+  return newArray
+}
 /**
  *
  * Define a function named `doubleTrouble` that takes an array of
  * numbers as an argument and returns a new array with all
  * the numbers multiplied by 2
  */
+const doubleTrouble = array => {
+  let newArray = array.map(x => x * 2)
+  return newArray
+}
 
 // ...
 
@@ -80,21 +81,34 @@
  * suffixed with " is at index X" where X is the index of the element
  */
 
-// ...
+const stringyIndexes = array => {
+  let newArray = array.map((x, i) => `${x} is at index ${i}`)
+  return newArray
+}
 
 /*
  * Define a function onlyTheEvenSurvive that accepts an array of
  * numbers and returns only the elements that are even
  */
 
-// ...
+const onlyTheEvenSurvive = array => {
+  let newArray = array.filter(x => {
+    return x % 2 === 0
+  })
+  return newArray
+}
 
 /*
  * Define a function onlyTheEvenIndexedSurvive that accepts an array of
  * numbers and returns only the elements at indexes that are even
  */
 
-// ...
+const onlyTheEvenIndexedSurvive = array => {
+  let newArray = array.filter((x, i) => {
+    return i % 2 === 0
+  })
+  return newArray
+}
 
 /*
  * Define a function bestMoviesOfTheYear that accepts an array of
@@ -110,7 +124,18 @@
  * }
  */
 
-// ...
+const bestMoviesOfTheYear = (array, y) => {
+  let yearFilter = array.filter(x => {
+    return x.year === y
+  })
+  let scoreFilteronYear = yearFilter.filter(y => {
+    return y.score > 90
+  })
+  let getName = scoreFilteronYear.map(z => {
+    return z.name
+  })
+  return getName
+}
 
 /*
  * Define a function everyoneIsOdd that accepts an array of
@@ -118,15 +143,24 @@
  * odd.
  */
 
-// ...
+const everyoneIsOdd = x => {
+  x.forEach(y => {
+    if (y % 2 === 1) {
+      return true
+    }
+  })
+}
 
 /*
  * Define a function findTheNeedle that accepts an array of
  * strings and returns the one string that contains the word
  * `needle` inside
  */
-
-// ...
+// cont findTheNeedsle = words =>{
+//   cont rv = words.filter(word =>{
+//     return word.toLowerCase().includes('needle')
+//   })[0]
+// }
 
 /*
  * Define a function findTheNeedleIndex that accepts an array of
@@ -177,8 +211,7 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
-// ...
-
+//
 /**
  * NOTE: Don't modify anything below this line...
  */
@@ -189,7 +222,9 @@ import test from 'ava'
 
 const ensureDefined = (t, method) => {
   if (eval(`typeof ${method}`) !== 'function') {
-    t.fail(`\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`)
+    t.fail(
+      `\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`
+    )
   }
 }
 
